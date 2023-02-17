@@ -18,19 +18,23 @@ var timer = document.querySelector("#timer");
 var startButton = document.createElement("button");
 // create multiple question options
 var option1 = document.createElement("button");
-option1.setAttribute("id", "option");
+option1.setAttribute("class", "option");
+option1.setAttribute("id", "option1");
 option1.setAttribute("data-storage", "0");
 
 var option2 = document.createElement("button");
-option2.setAttribute("id", "option");
+option2.setAttribute("class", "option");
+option2.setAttribute("id", "option2");
 option2.setAttribute("data-storage", "0");
 
 var option3 = document.createElement("button");
-option3.setAttribute("id", "option");
+option3.setAttribute("class", "option");
+option3.setAttribute("id", "option3");
 option3.setAttribute("data-storage", "0");
 
 var option4 = document.createElement("button");
-option4.setAttribute("id", "option");
+option4.setAttribute("class", "option");
+option4.setAttribute("id", "option4");
 option4.setAttribute("data-storage", "0");
 
 function startQuiz() {
@@ -76,16 +80,21 @@ startButton.addEventListener("click", function() {
         option4.textContent = "Python";
         console.log(option2);
 
-            var allOptions = document.getElementById("#option");
-            console.log(allOptions);
-            allOptions.addEventListener("click", function() {
-                if (option2) {
-                    console.log("right");
-                } else {
-                    console.log("wrong");
-                }
-                
-            });
+            //var allOptions = document.getElementsByClassName("option");
+            //console.log(allOptions);
+            
+            //var answer = document.getElementById("option2");
+            document.querySelectorAll(".option").forEach(item => {
+                item.addEventListener('click', event => {
+                    if (option2) {
+                        console.log("right");
+                    } else {
+                        console.log("wrong");
+                    }
+                })
+              })
+
+            
         }
      game();
 });
