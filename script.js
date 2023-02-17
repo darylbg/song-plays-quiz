@@ -1,5 +1,3 @@
-console.log("hello world");
-
 // 1 user clicks button starts timer countdown and game
 // 2 user presented with  a multiple choice question
 // 3 if question answered correctly timer resets otherwise timer continues
@@ -46,25 +44,30 @@ function startQuiz() {
 
 startQuiz();
 
-startButton.addEventListener("click", function() {
-    var secondsLeft = 15;
+//var secondsLeft = 15;
+var timer = document.createElement("p");
+//timer.id = "timer-p";
+timer.textContent = "15";
+highScore.append(timer);
 
-    function timeCountdown() {
-        var timer = document.createElement("p");
-        timer.id = "timer-p";
+/*function timeCountdown() {
+    
+    var timeLeft = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+    if (secondsLeft === 0) {
+        clearInterval(timeLeft);
         timer.textContent = "15";
-        highScore.append(timer);
-        var timeLeft = setInterval(function() {
-            secondsLeft--;
-            timer.textContent = secondsLeft;
-        if (secondsLeft === 0) {
-            clearInterval(timeLeft);
-            timer.textContent = "finished";
-        }
-        }, 1000);
-    } timeCountdown();
-});
+        //timeCountdown();
+    }
+    }, 1000);
+}*/
 
+//startButton.addEventListener("click", function() {
+    //var Countdown = setInterval(timeCountdown, 15000);
+    //timeCountdown();
+//});
+localStorage.setItem("win", "0");
 startButton.addEventListener("click", function() {
     function game() {
         quizTitle.textContent = "Question 1: What is the abreviation for Cascading Style Sheets";
@@ -80,21 +83,123 @@ startButton.addEventListener("click", function() {
         option4.textContent = "Python";
         console.log(option2);
 
-            //var allOptions = document.getElementsByClassName("option");
-            //console.log(allOptions);
-            
-            //var answer = document.getElementById("option2");
-            document.querySelectorAll(".option").forEach(item => {
-                item.addEventListener('click', event => {
-                    if (option2) {
-                        console.log("right");
-                    } else {
-                        console.log("wrong");
-                    }
-                })
-              })
-
-            
-        }
-     game();
+        localStorage.setItem("win", "0");
+        document.querySelectorAll(".option").forEach(item => {
+            item.addEventListener('click', event => {
+                if (event.target.textContent == "CSS") {
+                    console.log("right");
+                    var win = Number(localStorage.getItem("win"));
+                    localStorage.setItem("win", ++win);
+                    question2();
+                } else {
+                    console.log("wrong");
+                    question2();
+                }
+            });
+        });
+    } game();
+     
 });
+
+function question2() {
+    quizTitle.textContent = "Question 2: Who created Javascript";
+    quizOptions.append(option1);
+    option1.textContent = "Thomas Eriksen";
+    quizOptions.append(option2);
+    option2.textContent = "Jacob Lee";
+    quizOptions.append(option3);
+    option3.textContent = "Marylin Monroe";
+    quizOptions.append(option4);
+    option4.textContent = "Brendan Eich";
+
+    document.querySelectorAll(".option").forEach(item => {
+        item.addEventListener('click', event => {
+            if (event.target.textContent == "Brendan Eich") {
+                console.log("right");
+                var win = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++win);
+                question3();
+            } else {
+                console.log("wrong");
+                question3();
+            }
+        });
+    });
+}
+
+function question3() {
+    quizTitle.textContent = "Question 3: What is the average UK salary for a web developer";
+    quizOptions.append(option1);
+    option1.textContent = "£52,500";
+    quizOptions.append(option2);
+    option2.textContent = "£88,000";
+    quizOptions.append(option3);
+    option3.textContent = "£35,100";
+    quizOptions.append(option4);
+    option4.textContent = "£40,000";
+
+    document.querySelectorAll(".option").forEach(item => {
+        item.addEventListener('click', event => {
+            if (event.target.textContent == "£52,500") {
+                console.log("right");
+                var win = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++win);
+                question4();
+            } else {
+                console.log("wrong");
+                question4();
+            }
+        });
+    });
+}
+
+function question4() {
+    quizTitle.textContent = "Question 4: How many sides does an Icosioctagon have";
+    quizOptions.append(option1);
+    option1.textContent = "28";
+    quizOptions.append(option2);
+    option2.textContent = "18";
+    quizOptions.append(option3);
+    option3.textContent = "108";
+    quizOptions.append(option4);
+    option4.textContent = "48";
+
+    document.querySelectorAll(".option").forEach(item => {
+        item.addEventListener('click', event => {
+            if (event.target.textContent == "108") {
+                console.log("right");
+                var win = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++win);
+                question5();
+            } else {
+                console.log("wrong");
+                question5();
+            }
+        });
+    });
+}
+
+function question5() {
+// https://www.musicgenreslist.com/metal-music-genre/
+    quizTitle.textContent = "How many subgenres of Metal Music are there";
+    quizOptions.append(option1);
+    option1.textContent = "8";
+    quizOptions.append(option2);
+    option2.textContent = "17";
+    quizOptions.append(option3);
+    option3.textContent = "21";
+    quizOptions.append(option4);
+    option4.textContent = "53";
+
+    document.querySelectorAll(".option").forEach(item => {
+        item.addEventListener('click', event => {
+            if (event.target.textContent == "53") {
+                console.log("right");
+                var win = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++win);
+            } else {
+                console.log("wrong");
+            }
+        });
+    });
+}
