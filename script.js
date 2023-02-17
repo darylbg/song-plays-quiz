@@ -18,10 +18,20 @@ var timer = document.querySelector("#timer");
 var startButton = document.createElement("button");
 // create multiple question options
 var option1 = document.createElement("button");
+option1.setAttribute("id", "option");
+option1.setAttribute("data-storage", "0");
+
 var option2 = document.createElement("button");
+option2.setAttribute("id", "option");
+option2.setAttribute("data-storage", "0");
+
 var option3 = document.createElement("button");
+option3.setAttribute("id", "option");
+option3.setAttribute("data-storage", "0");
+
 var option4 = document.createElement("button");
-//var removeStartButton = quizOptions.removeChild(startButton);
+option4.setAttribute("id", "option");
+option4.setAttribute("data-storage", "0");
 
 function startQuiz() {
     quizTitle.textContent = "Click the button to start the game";
@@ -66,10 +76,10 @@ startButton.addEventListener("click", function() {
         option4.textContent = "Python";
         console.log(option2);
 
-        var allOptions = quizOptions.querySelectorAll("button");
-        for (i of allOptions) {
-            i.addEventListener("click", function() {
-                if (option2.click) {
+            var allOptions = document.getElementById("#option");
+            console.log(allOptions);
+            allOptions.addEventListener("click", function() {
+                if (option2) {
                     console.log("right");
                 } else {
                     console.log("wrong");
@@ -77,5 +87,5 @@ startButton.addEventListener("click", function() {
                 
             });
         }
-    } game();
+     game();
 });
