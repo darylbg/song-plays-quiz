@@ -6,16 +6,19 @@
 // 6 user prompted to enter initials/name and save
 // 7 if saved score is higher than all other scores, display score
 // 8 prompt user to play again
-
+var leftContainerEl = document.getElementById("1A");
+var rightContainerEl = document.getElementById("1B");
 var instructionsEl = document.getElementById("instructions");
 var playBtn = document.getElementById("play-btn");
 var main1El = document.getElementById("main1");
 var timerCountdownEl = document.getElementById("timer-countdown");
+var highScoreEl = document.getElementById("high-score");
 var leftSongEl = document.getElementById("left-song");
 var leftartistEl = document.getElementById("left-artist");
 var rightSongEl = document.getElementById("right-song");
 var rightArtistEl = document.getElementById("right-artist");
 
+localStorage.setItem("right", "0");
 
 playBtn.addEventListener("click", startGame);
 
@@ -89,25 +92,53 @@ var items = [
     }
  ];
 
-
-
 function setNextItem() {
+    //leftContainerEl.classList.remove("answer-right");
+    //leftContainerEl.classList.remove("answer-wrong");
+    //rightContainerEl.classList.remove("answer-right");
+    //rightContainerEl.classList.remove("answer-wrong");
     var selectItems = [];
     for (i = 0; i < 2; i++) {
         var randomItems = items[Math.floor(Math.random() * items.length)];
         
-        //if (selectItems[0] != selectItems[1]) {
-            
+        //if (selectItems[0]["id"] != selectItems[1]["id"]) {
+             
         //}
-        selectItems.push(randomItems);
-        console.log(selectItems);
-        //var obj = JSON.parse(selectItems);
-        //leftSongEl.textContent = selectItems(obj["song"]);
-       
+        selectItems.push(randomItems);        
     } 
+
+    leftSongEl.textContent = selectItems[0]["song"];
+    leftartistEl.textContent = selectItems[0]["artist"];
+    leftContainerEl.setAttribute("data-storage", selectItems[0]["plays"]);
+    rightSongEl.textContent = selectItems[1]["song"];
+    rightArtistEl.textContent = selectItems[1]["artist"];
+    rightContainerEl.setAttribute("data-storage", selectItems[1]["plays"]);
+
 } setNextItem();
 
+leftContainerEl.addEventListener("click", function() {
+    if (leftContainerEl.getAttribute("data-storage") > rightContainerEl.getAttribute("data-storage")) {
+        var numberRight = Number(localStorage.getItem("right"));
+        leftContainerEl.classList.add("answer-right");
+        localStorage.setItem("right", ++numberRight);
+        setNextItem();
+    } else {
+        leftContainerEl.classList.add("answer-wrong");
+        setNextItem();
+    }
+});
 
+rightContainerEl.addEventListener("click", function() {
+    if (rightContainerEl.getAttribute("data-storage") > leftContainerEl.getAttribute("data-storage")) {
+        var numberRight = Number(localStorage.getItem("right"));
+        rightContainerEl.classList.add("answer-right");
+        localStorage.setItem("right", ++numberRight);
+        setNextItem();
+    } else {
+        rightContainerEl.classList.add("answer-wrong");
+        setNextItem();
+    }
+});
 
 
 
