@@ -7,7 +7,260 @@
 // 7 if saved score is higher than all other scores, display score
 // 8 prompt user to play again
 
-var quizHeader = document.querySelector("#quiz-header");
+var instructionsEl = document.getElementById("instructions");
+var playBtn = document.getElementById("play-btn");
+var main1El = document.getElementById("main1");
+var timerCountdownEl = document.getElementById("timer-countdown");
+
+playBtn.addEventListener("click", startGame);
+
+function startGame() {
+        instructionsEl.style.visibility = "hidden";
+        main1El.style.visibility = "visible";
+        countdownTimer();
+} 
+
+var secondsLeft = 60;
+
+function countdownTimer() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerCountdownEl.textContent = secondsLeft;
+
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+}
+
+
+
+
+var items = [
+    {
+       "id": 01,
+       "song": "Don't stop believing",
+       "plays": 1480773640,
+       "artist": "Journey"
+    },
+    {
+       "id": 02,
+       "song": "Gimme! Gimme! Gimme!",
+       "plays": 529080834,
+       "artist": "ABBA"
+    },
+    {
+       "id": 03,
+       "song": "Sweet Child O' Mine",
+       "plays": 1414551943,
+       "artist": "Guns N' Roses"
+    },
+    {
+       "id": 04,
+       "song": "Enter Sandman",
+       "plays": 1035326214,
+       "artist": "Metallica"
+    },
+    {
+       "id": 05,
+       "song": "Livin' On a Prayer",
+       "plays": 1152250148,
+       "artist": "Bon Jovi"
+    },
+    {
+       "id": 06,
+       "song": "Take on Me",
+       "plays": 1316714415,
+       "artist": "a-ha"
+    },
+    {
+       "id": 07,
+       "song": "Africa",
+       "plays": 1367962446,
+       "artist": "Toto"
+    },
+    {
+       "id": 08,
+       "song": "I'm Still Standin",
+       "plays": 664607263,
+       "artist": "Elton John"
+    }
+ ];
+
+
+
+console.log(items[1]);
+
+
+function setNextItem() {
+    var selectItems = [];
+    for (i = 0; i < 2; i++) {
+        var selectItems = [];
+        var randomItems = items[Math.floor(Math.random() * items.length)];
+        selectItems.push(randomItems);
+        console.log(selectItems);
+    } 
+} setNextItem();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*var quizHeader = document.querySelector("#quiz-header");
 var quizTitle = document.querySelector("#quiz-title");
 var quizOptions = document.querySelector("#quiz-options");
 var highScore = document.querySelector("#high-score");
@@ -67,7 +320,7 @@ highScore.append(timer);
     //var Countdown = setInterval(timeCountdown, 15000);
     //timeCountdown();
 //});
-localStorage.setItem("win", "0");
+/*localStorage.setItem("win", "0");
 startButton.addEventListener("click", function() {
     function game() {
         quizTitle.textContent = "Question 1: What is the abreviation for Cascading Style Sheets";
@@ -86,10 +339,10 @@ startButton.addEventListener("click", function() {
         localStorage.setItem("win", "0");
         document.querySelectorAll(".option").forEach(item => {
             item.addEventListener('click', event => {
-                if (event.target.textContent == "CSS") {
+                if (event.target.textContent === "CSS") {
                     console.log("right");
-                    var win = Number(localStorage.getItem("win"));
-                    localStorage.setItem("win", ++win);
+                    var wins = Number(localStorage.getItem("win"));
+                    localStorage.setItem("win", ++wins);
                     question2();
                 } else {
                     console.log("wrong");
@@ -114,10 +367,10 @@ function question2() {
 
     document.querySelectorAll(".option").forEach(item => {
         item.addEventListener('click', event => {
-            if (event.target.textContent == "Brendan Eich") {
+            if (event.target.textContent === "Brendan Eich") {
                 console.log("right");
-                var win = Number(localStorage.getItem("win"));
-                localStorage.setItem("win", ++win);
+                var wins = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++wins);
                 question3();
             } else {
                 console.log("wrong");
@@ -140,10 +393,10 @@ function question3() {
 
     document.querySelectorAll(".option").forEach(item => {
         item.addEventListener('click', event => {
-            if (event.target.textContent == "£52,500") {
+            if (event.target.textContent === "£52,500") {
                 console.log("right");
-                var win = Number(localStorage.getItem("win"));
-                localStorage.setItem("win", ++win);
+                var wins = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++wins);
                 question4();
             } else {
                 console.log("wrong");
@@ -166,10 +419,10 @@ function question4() {
 
     document.querySelectorAll(".option").forEach(item => {
         item.addEventListener('click', event => {
-            if (event.target.textContent == "108") {
+            if (event.target.textContent === "108") {
                 console.log("right");
-                var win = Number(localStorage.getItem("win"));
-                localStorage.setItem("win", ++win);
+                var wins = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++wins);
                 question5();
             } else {
                 console.log("wrong");
@@ -193,13 +446,17 @@ function question5() {
 
     document.querySelectorAll(".option").forEach(item => {
         item.addEventListener('click', event => {
-            if (event.target.textContent == "53") {
+            if (event.target.textContent === "53") {
                 console.log("right");
-                var win = Number(localStorage.getItem("win"));
-                localStorage.setItem("win", ++win);
+                var wins = Number(localStorage.getItem("win"));
+                localStorage.setItem("win", ++wins);
             } else {
                 console.log("wrong");
             }
         });
     });
-}
+}*/
+
+
+
+

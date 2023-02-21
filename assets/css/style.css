@@ -1,14 +1,106 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    outline: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    outline: 1px solid green;
 }
 
-#quiz {
-    flex: 70%;
+#instructions {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    max-width: 45%;
 }
 
-#high-score {
-    flex: 30%;
+#instructions-h1 {
+    color: black;
+    font-family: sans-serif;
+}
+
+#tracker {
+    position: absolute;
+    top: 0;
+    right: 10%;
+}
+
+#high-score,
+#timer { 
+    color: white;
+    font-family: sans-serif;
+}
+
+.left-container {
+    flex: 50%;
+    height: 100vh;
+    justify-content: center;
+    border-right: 2px solid white;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ), url(../images/dont-stop-believing.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer-right:active {
+    background-image: linear-gradient(
+        rgba(8, 166, 21, 0.603), 
+        rgba(8, 166, 21, 0.603)
+      ), url(../images/dont-stop-believing.png);
+}
+
+.answer-wrong:active {
+    background-image: linear-gradient(
+        rgba(255, 2, 2, 0.7), 
+        rgba(255, 2, 2, 0.7)
+      ), url(../images/dont-stop-believing.png);
+}
+
+.right-container {
+    flex: 50%;
+    height: 100vh;
+    justify-content: center;
+    border-left: 2px solid white;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ), url(../images/gimme-gimme-gimme.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+section h2 {
+    color: white;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+section h4 {
+    color: rgb(212, 210, 210);
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+#main1,
+#main2,
+#main3,
+#main4 {
+    visibility: hidden;
 }
