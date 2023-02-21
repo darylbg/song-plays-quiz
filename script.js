@@ -11,6 +11,11 @@ var instructionsEl = document.getElementById("instructions");
 var playBtn = document.getElementById("play-btn");
 var main1El = document.getElementById("main1");
 var timerCountdownEl = document.getElementById("timer-countdown");
+var leftSongEl = document.getElementById("left-song");
+var leftartistEl = document.getElementById("left-artist");
+var rightSongEl = document.getElementById("right-song");
+var rightArtistEl = document.getElementById("right-artist");
+
 
 playBtn.addEventListener("click", startGame);
 
@@ -32,9 +37,6 @@ function countdownTimer() {
         }
     }, 1000);
 }
-
-
-
 
 var items = [
     {
@@ -89,16 +91,19 @@ var items = [
 
 
 
-console.log(items[1]);
-
-
 function setNextItem() {
     var selectItems = [];
     for (i = 0; i < 2; i++) {
-        var selectItems = [];
         var randomItems = items[Math.floor(Math.random() * items.length)];
+        
+        //if (selectItems[0] != selectItems[1]) {
+            
+        //}
         selectItems.push(randomItems);
         console.log(selectItems);
+        //var obj = JSON.parse(selectItems);
+        //leftSongEl.textContent = selectItems(obj["song"]);
+       
     } 
 } setNextItem();
 
