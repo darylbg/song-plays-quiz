@@ -59,14 +59,14 @@ main {
     background-image: linear-gradient(
         rgba(8, 166, 21, 0.603), 
         rgba(8, 166, 21, 0.603)
-      ), url(../images/dont-stop-believing.png);
+      );
 }
 
 .answer-wrong:active {
     background-image: linear-gradient(
         rgba(255, 2, 2, 0.7), 
         rgba(255, 2, 2, 0.7)
-      ), url(../images/dont-stop-believing.png);
+      );
 }
 
 .right-container {
