@@ -421,10 +421,10 @@ saveScoreBtn.addEventListener("click", function(event) {
    
 });
 
-// function playAgain() {
-//    var secondsLeft = 15;
-//  playAgainBtn.addEventListener("click", startGame);
-// } playAgain();
+function playAgain() {
+   var secondsLeft = 15;
+ playAgainBtn.addEventListener("click", startGame);
+} playAgain();
 
 
 
