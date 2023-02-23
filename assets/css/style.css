@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+    --grey: rgb(212, 210, 210);
+    --font: 'Roboto', sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,6 +13,14 @@ body {
     outline: none;
     height: 100vh;
     width: 100vw;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ), url(../images/background.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      flex-direction: row;
 }
 
 main {
@@ -14,15 +29,33 @@ main {
 }
 
 #instructions {
+    padding-left: 10%;
+    max-width: 45%;
     position: absolute;
     top: 0;
-    left: 0%;
-    max-width: 45%;
 }
 
 #instructions-h1 {
+    color: var(--grey);
+    font-family: var(--font);
+}
+
+#play-btn,
+#play-again {
+    height: 70px;
+    width: 150px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 2em;
+    font-family: var(--font);
+    margin-top: 30px;
+}
+
+#play-btn:hover,
+#play-again:hover {
+    background-color: white;
     color: black;
-    font-family: sans-serif;
 }
 
 #tracker {
@@ -32,7 +65,7 @@ main {
 }
 
 #timer { 
-    color: white;
+    color: var(--grey);
     font-family: sans-serif;
 }
 
@@ -85,13 +118,13 @@ main {
 }
 
 section h2 {
-    color: white;
+    color: var(--grey);
     font-family: sans-serif;
     font-weight: lighter;
 }
 
 section h4 {
-    color: rgb(212, 210, 210);
+    color: var(--grey);
     font-family: sans-serif;
     font-weight: lighter;
 }
@@ -101,6 +134,60 @@ section h4 {
 }
 #main2 {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
 }
-    
+
+#main2 section {
+    width: 50%;
+    padding-left: 10%;
+}
+
+.left-container2 h3, h4 {
+    color: var(--grey);
+    font-family: var(--font);
+}
+
+.highest-score-h3,
+.highest-score-h3 span,
+.you-scored-h4,
+.you-scored-h4 span {
+    font-size: 30px;
+    margin: 40px 0px 40px 0px;
+}
+
+#username {
+    height: 25px;
+}
+
+#saveScoreBtn {
+    height: 29px;
+    border: 1px solid white;
+}
+
+#saveScoreBtn:hover {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+#play-again {
+    font-size: 25px !important;
+}
+
+.rendered-scores {
+    top: 15%;
+    position: relative;
+}
+
+.rendered-scores ul li {
+    list-style: none;
+    float: right;
+    padding-right: 10%;
+}
+
+.rendered-scores ul li p {
+    color: var(--grey);
+    display: inline-block;
+    font-family: var(--font);
+    font-size: 20px;
+}

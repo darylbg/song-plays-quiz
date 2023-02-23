@@ -27,19 +27,22 @@ function startGame() {
         countdownTimer();
 } 
 
-var secondsLeft = 15;
+var secondsLeft;
 
 function countdownTimer() {
+   secondsLeft = 15;
+   timerCountdownEl.textContent = secondsLeft;
     var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timerCountdownEl.textContent = secondsLeft;
+         secondsLeft--;
+         timerCountdownEl.textContent = secondsLeft;
+        
 
         if (secondsLeft <= 0) {
             clearInterval(timerInterval);
             main1El.style.display = "none";
             main2El.style.display = "flex";
+            timerCountdownEl.textContent = "0";
             youScored.textContent = localStorage.getItem("right");
-            //var secondsLeft = 15;
         }
     }, 1000);
 }
@@ -403,7 +406,7 @@ function saveLastScore() {
 function renderScore() {
    var lastScore = JSON.parse(localStorage.getItem("userscore"));
    renderedName.textContent = lastScore.username;
-   renderedScore.textContent = lastScore.score;  
+   renderedScore.textContent = "score: " + lastScore.score;  
    if (lastScore.score > highScoreEl.textContent) {
       highScoreEl.textContent == lastScore.score;
    } 
@@ -422,8 +425,7 @@ saveScoreBtn.addEventListener("click", function(event) {
 });
 
 function playAgain() {
-   var secondsLeft = 15;
- playAgainBtn.addEventListener("click", startGame);
+   playAgainBtn.addEventListener("click", startGame);
 } playAgain();
 
 
