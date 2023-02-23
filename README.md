@@ -23,5 +23,12 @@ the deployed game results page will look like this screenshot: ![screenshot](ass
 
 ## Deployment
 
-The live deployed page can be found here: 
+The live deployed page can be found here: https://darylbg.github.io/song-plays-quiz/
 The source code can be found on Github here: https://github.com/darylbg/song-plays-quiz
+
+## Usage
+
+This game is a very fun and informative to play. It test both the players knowledge of a wide variety of music, but also thier quick decision making skills. As the game randomly picks different songs for the player to choose between, there can be no memorizing of patterns or scores making it difficult yet engaging and addictive to play.
+
+## License
+Please refer to the LICENSE in the repo.

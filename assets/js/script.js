@@ -16,6 +16,7 @@ var youScored = document.getElementById("you-scored");
 var renderedScore = document.getElementById("rendered-score");
 var renderedName = document.getElementById("rendered-name");
 var playAgainBtn = document.getElementById("play-again");
+var allScores = JSON.parse(localStorage.getItem("userscore")) || [];
 
 localStorage.setItem("right", "0");
 
@@ -448,13 +449,14 @@ rightContainerEl.addEventListener("click", function() {
 
 });
 
+
 function saveLastScore() {
    var userScore = {
       username: userName.value,
       score: youScored.textContent
    };
-
-   localStorage.setItem("userscore", JSON.stringify(userScore));
+   allScores.push(userScore);
+   localStorage.setItem("userscore", JSON.stringify(allScores));
 }
 
 function renderScore() {
