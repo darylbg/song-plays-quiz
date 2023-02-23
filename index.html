@@ -16,7 +16,7 @@
         <button id="play-btn">Play</button>
     </div>
     <div id="tracker">
-        <h4 id="timer">Time Left: <span id="timer-countdown">60<span></h4>
+        <h4 id="timer">Time Left: <span id="timer-countdown">15<span></h4>
         
     </div>
     <main id="main1">
@@ -30,21 +30,25 @@
         </section>
     </main>
     <main id="main2">
-        <h3>Highest Score:</h3>
-        <h4>You Scored: <span id="you-scored"></span></h4>
-        <form action="" id="last-score">
-            <input type="text" id="username" class="form-control" placeholder="Enter your initials">
-            <button type="submit" id="saveScoreBtn">Save</button>
-        </form>
-        <button id="play-again">Play Again</button>
-        <div>
-            <ul>
-                <li>
-                    <p id="rendered-name"></p>
-                    <p id="rendered-score"></p>
-                </li>
-            </ul>
-        </div>
+        <section class="left-container">
+            <h3>Highest Score: <span id="high-score">0</span></h3>
+            <h4>You Scored: <span id="you-scored"></span></h4>
+            <form action="" id="last-score">
+                <input type="text" id="username" class="form-control" placeholder="Enter your initials">
+                <button type="submit" id="saveScoreBtn">Save</button>
+            </form>
+            <button id="play-again">Play Again</button>
+        </section>
+        <section class="right-container">
+            <div>
+                <ul>
+                    <li>
+                        <p id="rendered-name"></p>
+                        <p id="rendered-score"></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 <script src="script.js"></script>
 </body>
