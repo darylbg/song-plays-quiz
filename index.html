@@ -9,12 +9,15 @@
 </head>
 <body>
     <div id="instructions">
-        <h1 id="instructions-h1">Please select which song you think has more plays on Spotify</h1>
+        <h1 id="instructions-h1">In this game you will be presented with 2 different songs and you will have to choose which one you think
+            has more plays on Spotify. You will be given 60 seconds to play as many times as you can but if you select the wrong choice,
+            5 seconds will be removed from your time left.
+        </h1>
         <button id="play-btn">Play</button>
     </div>
     <div id="tracker">
         <h4 id="timer">Time Left: <span id="timer-countdown">60<span></h4>
-        <h4 id="high-score">High Score;</h4>
+        
     </div>
     <main id="main1">
         <section class="left-container" id="1A" data-storage="">
@@ -25,6 +28,23 @@
             <h2 id="right-song"></h2>
             <h4 id="right-artist"></h4>
         </section>
+    </main>
+    <main id="main2">
+        <h3>Highest Score:</h3>
+        <h4>You Scored: <span id="you-scored"></span></h4>
+        <form action="" id="last-score">
+            <input type="text" id="username" class="form-control" placeholder="Enter your initials">
+            <button type="submit" id="saveScoreBtn">Save</button>
+        </form>
+        <button id="play-again">Play Again</button>
+        <div>
+            <ul>
+                <li>
+                    <p id="rendered-name"></p>
+                    <p id="rendered-score"></p>
+                </li>
+            </ul>
+        </div>
     </main>
 <script src="script.js"></script>
 </body>

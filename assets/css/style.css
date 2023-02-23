@@ -11,7 +11,6 @@ body {
 main {
     height: 100vh;
     width: 100vw;
-    display: flex;
 }
 
 #instructions {
@@ -32,7 +31,6 @@ main {
     right: 10%;
 }
 
-#high-score,
 #timer { 
     color: white;
     font-family: sans-serif;
@@ -98,9 +96,11 @@ section h4 {
     font-weight: lighter;
 }
 
-#main1,
-#main2,
-#main3,
-#main4 {
-    visibility: hidden;
+#main1 {
+    display: none;
 }
+#main2 {
+    display: none;
+    flex-direction: column;
+}
+    

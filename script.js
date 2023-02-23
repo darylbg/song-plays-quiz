@@ -1,22 +1,20 @@
-// 1 user clicks button starts timer countdown and game
-// 2 user presented with  a multiple choice question
-// 3 if question answered correctly timer resets otherwise timer continues
-// 4 user presented with a new question when the previous one is answered
-// 5 if either timer reaches 0 or all questions answered game is over
-// 6 user prompted to enter initials/name and save
-// 7 if saved score is higher than all other scores, display score
-// 8 prompt user to play again
 var leftContainerEl = document.getElementById("1A");
 var rightContainerEl = document.getElementById("1B");
 var instructionsEl = document.getElementById("instructions");
 var playBtn = document.getElementById("play-btn");
 var main1El = document.getElementById("main1");
+var main2El = document.getElementById("main2");
 var timerCountdownEl = document.getElementById("timer-countdown");
 var highScoreEl = document.getElementById("high-score");
 var leftSongEl = document.getElementById("left-song");
 var leftartistEl = document.getElementById("left-artist");
 var rightSongEl = document.getElementById("right-song");
 var rightArtistEl = document.getElementById("right-artist");
+var saveScoreBtn = document.getElementById("saveScoreBtn");
+var userName = document.getElementById("username");
+var youScored = document.getElementById("you-scored");
+var renderedScore = document.getElementById("rendered-score");
+var renderedName = document.getElementById("rendered-name");
 
 localStorage.setItem("right", "0");
 
@@ -24,19 +22,22 @@ playBtn.addEventListener("click", startGame);
 
 function startGame() {
         instructionsEl.style.visibility = "hidden";
-        main1El.style.visibility = "visible";
+        main1El.style.display = "flex";
         countdownTimer();
 } 
 
-var secondsLeft = 60;
+var secondsLeft = 15;
 
 function countdownTimer() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timerCountdownEl.textContent = secondsLeft;
 
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             clearInterval(timerInterval);
+            main1El.style.display = "none";
+            main2El.style.display = "flex";
+            youScored.textContent = localStorage.getItem("right");
         }
     }, 1000);
 }
@@ -346,21 +347,22 @@ var items = [
 
 function setNextItem() {
     var selectItems = [];
-    for (i = 0; i < 2; i++) {
-        var randomItems = items[Math.floor(Math.random() * items.length)];
-        
-        //if (selectItems[0]["id"] != selectItems[1]["id"]) {
-             
-        //}
-        selectItems.push(randomItems);        
-    } 
 
-    leftSongEl.textContent = selectItems[0]["song"];
-    leftartistEl.textContent = selectItems[0]["artist"];
-    leftContainerEl.setAttribute("data-storage", selectItems[0]["plays"]);
-    rightSongEl.textContent = selectItems[1]["song"];
-    rightArtistEl.textContent = selectItems[1]["artist"];
-    rightContainerEl.setAttribute("data-storage", selectItems[1]["plays"]);
+   var num1 = Math.floor(Math.random() * items.length);
+   var num2 = Math.floor(Math.random() * items.length);
+
+   while (num1 == num2) {
+      num2 = Math.floor(Math.random() * items.length);
+   }
+   selectItems.push(items[num1]); 
+   selectItems.push(items[num2]); 
+
+   leftSongEl.textContent = selectItems[0]["song"];
+   leftartistEl.textContent = selectItems[0]["artist"];
+   leftContainerEl.setAttribute("data-storage", selectItems[0]["plays"]);
+   rightSongEl.textContent = selectItems[1]["song"];
+   rightArtistEl.textContent = selectItems[1]["artist"];
+   rightContainerEl.setAttribute("data-storage", selectItems[1]["plays"]);
 
 } setNextItem();
 
@@ -370,6 +372,7 @@ leftContainerEl.addEventListener("click", function() {
         localStorage.setItem("right", ++numberRight);
         setNextItem();
     } else {
+         window.secondsLeft = secondsLeft - 5;
         setNextItem();
     } 
 });
@@ -380,10 +383,39 @@ rightContainerEl.addEventListener("click", function() {
         localStorage.setItem("right", ++numberRight);
         setNextItem();
     } else {
+         window.secondsLeft = secondsLeft - 5;
         setNextItem();
     }
 
 });
+
+function saveLastScore() {
+   var userScore = {
+      username: userName.value,
+      score: youScored.textContent
+   };
+
+   localStorage.setItem("userscore", JSON.stringify(userScore));
+}
+
+function renderScore() {
+   var lastScore = JSON.parse(localStorage.getItem("userscore"));
+   renderedName.textContent = lastScore.username;
+   renderedScore.textContent = lastScore.score;
+   
+
+}
+
+
+saveScoreBtn.addEventListener("click", function(event) {
+   event.preventDefault();
+   if (lastScore.username == "") {
+      alert("Please enter your initials");
+   }
+   saveLastScore();  
+   renderScore();
+});
+
 
 
 
