@@ -460,13 +460,11 @@ function saveLastScore() {
 }
 
 function renderScore() {
-   // var lastScore = JSON.parse(localStorage.getItem("userscore"));
-   // renderedName.textContent = lastScore.username;
-   // renderedScore.textContent = "scored: " + lastScore.score;  
-   for (i = 0; 1 < allScores.length; i++) {
-      renderedName.textContent = allScores.userName;
-      renderedScore.textContent = allScores.score;
-   }
+
+   // for (i = 0; 1 < allScores.length; i++) {
+   //    renderedName.textContent = allScores.userName;
+   //    renderedScore.textContent = allScores.score;
+   // }
    if (allScores[0].score > highScoreEl.textContent) {
       highScoreEl.textContent = allScores[0].score;
    } 
