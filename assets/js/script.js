@@ -10,12 +10,15 @@ var leftSongEl = document.getElementById("left-song");
 var leftartistEl = document.getElementById("left-artist");
 var rightSongEl = document.getElementById("right-song");
 var rightArtistEl = document.getElementById("right-artist");
+var lastScoreTitleEl = document.getElementById("render-list-title");
+var lastScore = document.getElementById("last-score");
 var saveScoreBtn = document.getElementById("saveScoreBtn");
 var userName = document.getElementById("username");
 var youScored = document.getElementById("you-scored");
 var renderedScore = document.getElementById("rendered-score");
 var renderedName = document.getElementById("rendered-name");
 var playAgainBtn = document.getElementById("play-again");
+var renderedList = document.getElementById("render-list");
 var allScores = JSON.parse(localStorage.getItem("userscore")) || [];
 
 localStorage.setItem("right", "0");
@@ -31,7 +34,7 @@ function startGame() {
 var secondsLeft;
 
 function countdownTimer() {
-   secondsLeft = 60;
+   secondsLeft = 15;
    timerCountdownEl.textContent = secondsLeft;
     var timerInterval = setInterval(function() {
          secondsLeft--;
@@ -449,7 +452,6 @@ rightContainerEl.addEventListener("click", function() {
 
 });
 
-
 function saveLastScore() {
    var userScore = {
       username: userName.value,
@@ -460,14 +462,19 @@ function saveLastScore() {
 }
 
 function renderScore() {
+   
+   lastScoreTitleEl.textContent = "Recent Scores";
 
-   // for (i = 0; 1 < allScores.length; i++) {
-   //    renderedName.textContent = allScores.userName;
-   //    renderedScore.textContent = allScores.score;
-   // }
-   if (allScores[0].score > highScoreEl.textContent) {
-      highScoreEl.textContent = allScores[0].score;
-   } 
+   var x = allScores.slice(0,9);
+   var maxArrEl
+   for (let i = 0; i < x.length; i++) {
+      var listEl = document.createElement("li");
+      listEl.textContent = `Initials: ${x[i].username} Score: ${x[i].score}`;
+      listEl.setAttribute("id", "display-list");
+      maxArrEl = Math.max(x[i].score);
+      renderedList.appendChild(listEl);
+   }
+      highScoreEl.textContent = maxArrEl;
 }
 
 
@@ -479,11 +486,13 @@ saveScoreBtn.addEventListener("click", function(event) {
       saveLastScore();  
       renderScore();
    }
-   userName.value = "";
+   //userName.value = "";
+   lastScore.style.visibility = "hidden";
 });
 
 function playAgain() {
    playAgainBtn.addEventListener("click", startGame);
+   lastScore.style.visibility = "visible";
 } playAgain();
 
 

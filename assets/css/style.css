@@ -177,17 +177,18 @@ section h4 {
 .rendered-scores {
     top: 15%;
     position: relative;
+    padding-left: 15%;
 }
 
-.rendered-scores ul li {
-    list-style: none;
-    float: right;
-    padding-right: 10%;
+#render-list {
+    padding-left: 0;
 }
 
-.rendered-scores ul li p {
+#render-list-title,
+#display-list {
     color: var(--grey);
-    display: inline-block;
+    font-size: 25px;
     font-family: var(--font);
-    font-size: 20px;
+    width: 100%;
+    display: block;
 }

@@ -43,7 +43,7 @@
             <!--Form to input player details and save player score-->
             <form action="" id="last-score">
                 <h4>To save your score, please enter your initials and save. Otherwise play again!</h4>
-                <input type="text" id="username" class="form-control" placeholder="Enter your initials">
+                <input type="text" maxlength="2" id="username" class="form-control" placeholder="Enter your initials">
                 <button type="submit" id="saveScoreBtn">Save</button>
             </form>
             <!--Button to replay the game-->
@@ -52,11 +52,12 @@
         <section class="right-container2">
             <!--This section logs user scores if they save it-->
             <div class="rendered-scores">
-                <ul>
-                    <li>
+                <h3 id="render-list-title"></h3>
+                <ul id="render-list">
+                    <!-- <li>
                         <p id="rendered-name"></p>
                         <p id="rendered-score"></p>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>
