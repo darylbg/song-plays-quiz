@@ -1,3 +1,4 @@
+// Global variables set to target elements in the DOM
 var leftContainerEl = document.getElementById("1A");
 var rightContainerEl = document.getElementById("1B");
 var instructionsEl = document.getElementById("instructions");
@@ -19,12 +20,13 @@ var renderedScore = document.getElementById("rendered-score");
 var renderedName = document.getElementById("rendered-name");
 var playAgainBtn = document.getElementById("play-again");
 var renderedList = document.getElementById("render-list");
+// variable parses json object to be stored as string in local storage
 var allScores = JSON.parse(localStorage.getItem("userscore")) || [];
-
+// sets local storage key of right defaults value to 0
 localStorage.setItem("right", "0");
-
+// addes event listener to button to start game
 playBtn.addEventListener("click", startGame);
-
+// sets css styles to be applied when game is started, starts countdown timer
 function startGame() {
         instructionsEl.style.visibility = "hidden";
         main1El.style.display = "flex";
@@ -32,7 +34,7 @@ function startGame() {
 } 
 
 var secondsLeft;
-
+// countdown timer from 60 seconds
 function countdownTimer() {
    secondsLeft = 15;
    timerCountdownEl.textContent = secondsLeft;
@@ -50,7 +52,7 @@ function countdownTimer() {
         }
     }, 1000);
 }
-
+// JSON object array to store game questions
 var items = [
     {
        "id": 01,
@@ -404,7 +406,7 @@ var items = [
         "img": "https://assets.capitalfm.com/2011/51/coldplay-1324289869-view-2.jpg"
      }
  ];
-
+// selects 2 random objects from the json array, validates they are not the same object, sets HTML content to the object values
 function setNextItem() {
     var selectItems = [];
 
@@ -435,6 +437,7 @@ leftContainerEl.addEventListener("click", function() {
         localStorage.setItem("right", ++numberRight);
         setNextItem();
     } else {
+// subtracts 5s from the coutndown timer if the question is answered wrong
          window.secondsLeft = secondsLeft - 5;
         setNextItem();
     } 
@@ -462,19 +465,20 @@ function saveLastScore() {
 }
 
 function renderScore() {
-   
+   var array = [];
+   var x = allScores.slice(0,9);
    lastScoreTitleEl.textContent = "Recent Scores";
 
-   var x = allScores.slice(0,9);
-   var maxArrEl
    for (let i = 0; i < x.length; i++) {
       var listEl = document.createElement("li");
       listEl.textContent = `Initials: ${x[i].username} Score: ${x[i].score}`;
       listEl.setAttribute("id", "display-list");
-      maxArrEl = Math.max(x[i].score);
+      array.push(x[i].score);
       renderedList.appendChild(listEl);
    }
-      highScoreEl.textContent = maxArrEl;
+
+   var parsedArray = parseInt(array);
+   highScoreEl.textContent = Math.max(parsedArray);
 }
 
 
@@ -487,12 +491,12 @@ saveScoreBtn.addEventListener("click", function(event) {
       renderScore();
    }
    userName.value = "";
-   //lastScore.style.visibility = "hidden";
+   lastScore.style.visibility = "hidden";
 });
 
 function playAgain() {
    playAgainBtn.addEventListener("click", startGame);
-   //lastScore.style.visibility = "visible";
+   lastScore.style.visibility = "visible";
 } playAgain();
 
 
