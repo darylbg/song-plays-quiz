@@ -465,20 +465,22 @@ function saveLastScore() {
 }
 
 function renderScore() {
-   var array = [];
+   var scores10 = [];
    var x = allScores.slice(0,9);
    lastScoreTitleEl.textContent = "Recent Scores";
 
    for (let i = 0; i < x.length; i++) {
       var listEl = document.createElement("li");
-      listEl.textContent = `Initials: ${x[i].username} Score: ${x[i].score}`;
+      listEl.textContent = `${x[i].username} Scored: ${x[i].score}`;
       listEl.setAttribute("id", "display-list");
-      array.push(x[i].score);
+      scores10.push(x[i].score);
       renderedList.appendChild(listEl);
    }
 
-   var parsedArray = parseInt(array);
-   highScoreEl.textContent = Math.max(parsedArray);
+   var Scores10Int = scores10.split(",").map(Number);
+   console.log(array);
+   console.log(parsedArray);
+   highScoreEl.textContent = Math.max(Scores10Int);
 }
 
 
@@ -495,8 +497,9 @@ saveScoreBtn.addEventListener("click", function(event) {
 });
 
 function playAgain() {
-   playAgainBtn.addEventListener("click", startGame);
-   lastScore.style.visibility = "visible";
+   playAgainBtn.addEventListener("click", function(){
+      window.location.reload();
+   });
 } playAgain();
 
 

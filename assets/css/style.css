@@ -45,6 +45,12 @@ main {
     font-family: var(--font);
 }
 
+@media screen and (max-width: 850px) {
+    #instructions-h1 {
+        font-size: 20px;
+    }
+}
+
 /*--styling for play and play again buttons--*/
 #play-btn,
 #play-again {
@@ -123,6 +129,12 @@ section h2 {
     margin-bottom: 0;
 }
 
+@media screen and (max-width: 800px) {
+    section h2 {
+        font-size: 25px;
+    }
+}
+
 section h4 {
     color: var(--grey);
     font-family: sans-serif;
@@ -155,12 +167,27 @@ section h4 {
     margin: 40px 0px 40px 0px;
 }
 
+@media screen and (max-width: 800px) {
+    .highest-score-h3,
+    .highest-score-h3 span,
+    .you-scored-h4,
+    .you-scored-h4 span {
+        font-size: 20px;
+    }
+}
+
 #username {
     height: 25px;
 }
 
+@media screen and (max-width: 800px) {
+    #username {
+        width: 105px;
+    }
+}
+
 #saveScoreBtn {
-    height: 29px;
+    height: 28px;
     border: 1px solid white;
 }
 
@@ -191,4 +218,11 @@ section h4 {
     font-family: var(--font);
     width: 100%;
     display: block;
+}
+
+@media screen and (max-width: 800px) {
+    #render-list-title,
+#display-list {
+    font-size: 18px;
+}
 }
