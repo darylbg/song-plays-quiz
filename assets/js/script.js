@@ -486,13 +486,13 @@ saveScoreBtn.addEventListener("click", function(event) {
       saveLastScore();  
       renderScore();
    }
-   //userName.value = "";
-   lastScore.style.visibility = "hidden";
+   userName.value = "";
+   //lastScore.style.visibility = "hidden";
 });
 
 function playAgain() {
    playAgainBtn.addEventListener("click", startGame);
-   lastScore.style.visibility = "visible";
+   //lastScore.style.visibility = "visible";
 } playAgain();
 
 
