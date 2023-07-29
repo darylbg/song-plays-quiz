@@ -36,7 +36,7 @@ function startGame() {
 var secondsLeft;
 // countdown timer from 60 seconds
 function countdownTimer() {
-   secondsLeft = 15;
+   secondsLeft = 60;
    timerCountdownEl.textContent = secondsLeft;
     var timerInterval = setInterval(function() {
          secondsLeft--;
